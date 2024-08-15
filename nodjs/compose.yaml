@@ -1,0 +1,21 @@
+version: "3"
+services:
+  node-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - PORT=${PORT_NO} 
+    ports:
+      - "4000:${PORT_NO}"
+    volumes:
+      - node-app:/data
+    networks:
+      - node-network
+
+volumes:
+  node-app:
+
+networks:
+  node-network:
+    driver: bridge
